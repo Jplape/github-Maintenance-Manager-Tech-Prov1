@@ -1,2 +1,2 @@
-// Model exports will go here
-export {};
+export * from './intervention';
+export * from './equipment';

@@ -1,14 +1,10 @@
-import { Router } from 'express';
-import interventionRoutes from './interventionRoutes.js';
+import express from 'express';
+import interventionRoutes from './interventionRoutes';
+import equipmentRoutes from './equipmentRoutes';
 
-const router = Router();
+const router = express.Router();
 
-// Health check route
-router.get('/health', (_req, res) => {
-  res.json({ status: 'ok', timestamp: new Date() });
-});
-
-// Mount intervention routes
 router.use('/interventions', interventionRoutes);
+router.use('/equipment', equipmentRoutes);
 
 export default router;

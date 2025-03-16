@@ -1,20 +1,19 @@
-export class NotFoundError extends Error {
-  constructor(message: string) {
+export class ApiError extends Error {
+  constructor(
+    public statusCode: number,
+    message: string
+  ) {
     super(message);
-    this.name = 'NotFoundError';
+    this.name = 'ApiError';
   }
 }
 
-export class BadRequestError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'BadRequestError';
-  }
+export interface ValidationError {
+  field: string;
+  message: string;
 }
 
-export class ValidationError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'ValidationError';
-  }
+export interface ErrorResponse {
+  message: string;
+  errors?: ValidationError[];
 }
